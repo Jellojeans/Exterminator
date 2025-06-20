@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxvh0q80pb67t"
+path="res://.godot/imported/fire.mp3-3a44a72f5741c4d36f87a4d030935632.mp3str"
+
+[deps]
+
+source_file="res://sounds/bugout sounds/fire.mp3"
+dest_files=["res://.godot/imported/fire.mp3-3a44a72f5741c4d36f87a4d030935632.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

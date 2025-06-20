@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxe8oy15hjk4f"
+path="res://.godot/imported/nicefire.mp3-0a8ecc26d79dbf3d239ef5c15247b32a.mp3str"
+
+[deps]
+
+source_file="res://sounds/bugout sounds/nicefire.mp3"
+dest_files=["res://.godot/imported/nicefire.mp3-0a8ecc26d79dbf3d239ef5c15247b32a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

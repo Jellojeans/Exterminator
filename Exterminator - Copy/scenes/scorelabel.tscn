@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://0tx3wuhdou5b"]
+
+[ext_resource type="Script" uid="uid://blow8aix5ouie" path="res://script/scorelabel.gd" id="1_q7wrb"]
+
+[node name="scorelabel" type="Label"]
+z_index = 3
+offset_left = 986.0
+offset_top = 39.0
+offset_right = 1367.0
+offset_bottom = 100.0
+scale = Vector2(1.58471, 1.46638)
+theme_override_colors/font_color = Color(0.933333, 0.870588, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "enemies defeated"
+script = ExtResource("1_q7wrb")

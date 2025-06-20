@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do3g5f7n6r8p1"
+path="res://.godot/imported/untitled.mp3-adfd97fcaad5260848e03ac59daf8f6b.mp3str"
+
+[deps]
+
+source_file="res://sounds/bugout sounds/untitled.mp3"
+dest_files=["res://.godot/imported/untitled.mp3-adfd97fcaad5260848e03ac59daf8f6b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

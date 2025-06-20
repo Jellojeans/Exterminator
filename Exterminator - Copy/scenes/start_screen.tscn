@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsikdx4nx1h3g"]
+
+[ext_resource type="Script" uid="uid://bllkfqv4epukk" path="res://script/control.gd" id="1_lo5s8"]
+[ext_resource type="Texture2D" uid="uid://hqt2uya617n2" path="res://assets/titlebg.png" id="2_2ijr8"]
+[ext_resource type="Texture2D" uid="uid://eam2ipkibtxt" path="res://assets/Sprite-0002.png" id="3_c4c5t"]
+[ext_resource type="Texture2D" uid="uid://dyu8817vsejm1" path="res://assets/christmas game/christmas game/christmas game/frame0000.png" id="4_ufgir"]
+[ext_resource type="Texture2D" uid="uid://danxrpff0id66" path="res://assets/Shoot.png" id="5_471ly"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lo5s8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(970, 544)
+scale = Vector2(0.509375, 0.511111)
+texture = ExtResource("2_2ijr8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(998, 469)
+rotation = -0.00163312
+scale = Vector2(1.12598, 0.755826)
+texture = ExtResource("3_c4c5t")
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1627.0
+offset_top = 932.0
+offset_right = 1673.0
+offset_bottom = 963.0
+scale = Vector2(3.0404, 1.64671)
+text = "Start
+"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 952.0
+offset_right = 149.0
+offset_bottom = 983.0
+scale = Vector2(2.25158, 2.1371)
+text = "quit"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1482, 928)
+scale = Vector2(0.200644, 0.259216)
+texture = ExtResource("4_ufgir")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 549.0
+offset_right = 1307.0
+offset_bottom = 680.0
+scale = Vector2(1.01012, 1)
+theme_override_font_sizes/font_size = 46
+text = "      wasd to move
+space or click to shoot"
+
+[node name="touchstart" type="TouchScreenButton" parent="."]
+position = Vector2(1560, 889)
+scale = Vector2(0.0783212, 0.0649104)
+texture_normal = ExtResource("5_471ly")
+
+[node name="touchquit" type="TouchScreenButton" parent="."]
+position = Vector2(57, 917)
+scale = Vector2(0.060397, 0.0521103)
+texture_normal = ExtResource("5_471ly")
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="touchstart" to="." method="_on_touchstart_pressed"]
+[connection signal="pressed" from="touchquit" to="." method="_on_touchquit_pressed"]

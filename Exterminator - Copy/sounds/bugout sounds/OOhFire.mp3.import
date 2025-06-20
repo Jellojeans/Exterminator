@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj0eye3k1g10r"
+path="res://.godot/imported/OOhFire.mp3-b88d24303480ce630e6f0fe8f0c7e3bf.mp3str"
+
+[deps]
+
+source_file="res://sounds/bugout sounds/OOhFire.mp3"
+dest_files=["res://.godot/imported/OOhFire.mp3-b88d24303480ce630e6f0fe8f0c7e3bf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

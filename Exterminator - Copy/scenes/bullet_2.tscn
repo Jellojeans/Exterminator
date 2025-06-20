@@ -1,0 +1,167 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcyw043aac8yd"]
+
+[ext_resource type="Script" uid="uid://b6kef3rh0w67" path="res://script/bullet_2.gd" id="1_rbdfw"]
+[ext_resource type="Texture2D" uid="uid://bu6due4wunm6v" path="res://assets/bullet2.png" id="2_a2kgb"]
+
+[sub_resource type="Animation" id="Animation_v4deb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8.88309, -147.847)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18.6477, 145.199)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16.5488, 143.298)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8.8831, -147.847)]
+}
+
+[sub_resource type="Animation" id="Animation_xm0l7"]
+resource_name = "fire"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53, 1.01, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8.88309, -147.847), Vector2(14.6254, -242.26), Vector2(11.5547, -349.451), Vector2(28.0807, -465.139)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53, 1.01, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-18.6477, 145.199), Vector2(-16.9655, 281.022), Vector2(-15.6498, 417.284), Vector2(-23.255, 543.259)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53, 1.01, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-16.5488, 143.298), Vector2(-7.45962, 281.618), Vector2(-15.0648, 407.593), Vector2(-23.255, 543.259)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53, 1.01, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8.8831, -147.847), Vector2(24.1312, -241.664), Vector2(21.0606, -348.855), Vector2(37.5866, -464.543)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ig2hj"]
+_data = {
+&"RESET": SubResource("Animation_v4deb"),
+&"fire": SubResource("Animation_xm0l7")
+}
+
+[node name="bullet2" type="Area2D"]
+position = Vector2(-1, 1)
+rotation = -0.0614653
+scale = Vector2(0.105, 0.103)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rbdfw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 2)
+rotation = -1.50467
+scale = Vector2(0.329792, 0.483898)
+texture = ExtResource("2_a2kgb")
+offset = Vector2(465.105, -0.117302)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-16.5488, 143.298)
+rotation = -1.50467
+scale = Vector2(-0.374602, 0.523841)
+texture = ExtResource("2_a2kgb")
+offset = Vector2(465.105, -0.117302)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(8.8831, -147.847)
+rotation = -1.50467
+scale = Vector2(0.329792, 0.483898)
+texture = ExtResource("2_a2kgb")
+offset = Vector2(465.105, -0.117302)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(8.88309, -147.847)
+rotation = -1.51496
+polygon = PackedVector2Array(-1, 73, -14, 69, -25, 57, -35, 35, -36, 13, -34, -8, -29, -26, -34, -49, -30, -45, -24, -44, -18, -50, -19, -71, -20, -100, -14, -94, -9, -92, -4, -112, -7, -131, -6, -138, 0, -133, 6, -145, 9, -170, 14, -152, 17, -144, 24, -154, 23, -138, 20, -130, 23, -104, 30, -86, 36, -87, 37, -95, 35, -69, 32, -52, 34, -28, 41, -40, 41, -33, 36, -12, 37, 20, 37, 42, 30, 58, 22, 65, 13, 70)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2(-18.6477, 145.199)
+rotation = -1.51496
+scale = Vector2(-1.0986, 1.08139)
+polygon = PackedVector2Array(-1, 73, -14, 69, -25, 57, -35, 35, -36, 13, -34, -8, -29, -26, -34, -49, -30, -45, -24, -44, -18, -50, -19, -71, -20, -100, -14, -94, -9, -92, -4, -112, -7, -131, -6, -138, 0, -133, 6, -145, 9, -170, 14, -152, 17, -144, 24, -154, 23, -138, 20, -130, 23, -104, 30, -86, 36, -87, 37, -95, 35, -69, 32, -52, 34, -28, 41, -40, 41, -33, 36, -12, 37, 20, 37, 42, 30, 58, 22, 65, 13, 70)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.89927, 0.689398)
+rotation = -1.51496
+polygon = PackedVector2Array(-1, 73, -14, 69, -25, 57, -35, 35, -36, 13, -34, -8, -29, -26, -34, -49, -30, -45, -24, -44, -18, -50, -19, -71, -20, -100, -14, -94, -9, -92, -4, -112, -7, -131, -6, -138, 0, -133, 6, -145, 9, -170, 14, -152, 17, -144, 24, -154, 23, -138, 20, -130, 23, -104, 30, -86, 36, -87, 37, -95, 35, -69, 32, -52, 34, -28, 41, -40, 41, -33, 36, -12, 37, 20, 37, 42, 30, 58, 22, 65, 13, 70)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ig2hj")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

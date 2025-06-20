@@ -1,0 +1,215 @@
+[gd_scene load_steps=21 format=3 uid="uid://bw4han0xktifl"]
+
+[ext_resource type="Script" uid="uid://crchqsjcaq5lf" path="res://scenes/bugtwo.gd" id="1_3si2t"]
+[ext_resource type="Texture2D" uid="uid://dwi4p5oy476pk" path="res://assets/dragonanim/Armature_animtion0_00.png" id="2_ybg8t"]
+[ext_resource type="Texture2D" uid="uid://cibpc6dy7d6jw" path="res://assets/dragonanim/Armature_animtion0_01.png" id="3_6phx2"]
+[ext_resource type="Texture2D" uid="uid://cg4d1fdtxq6km" path="res://assets/dragonanim/Armature_animtion0_02.png" id="4_8r1r6"]
+[ext_resource type="AudioStream" uid="uid://dn8oe3gx7h077" path="res://sounds/bugout sounds/squish.mp3" id="4_brg51"]
+[ext_resource type="Texture2D" uid="uid://d02mygxm63b1n" path="res://assets/blood.png" id="5_74ldu"]
+[ext_resource type="Texture2D" uid="uid://pwne606tbnj6" path="res://assets/dragonanim/Armature_animtion0_03.png" id="5_hy6m6"]
+[ext_resource type="Texture2D" uid="uid://dewr3unklqx8r" path="res://assets/dragonanim/Armature_animtion0_04.png" id="6_edhvy"]
+[ext_resource type="Texture2D" uid="uid://sv7leuruqyoi" path="res://assets/dragonanim/Armature_animtion0_05.png" id="7_8dxrs"]
+[ext_resource type="Texture2D" uid="uid://b2n6b2swr4f76" path="res://assets/dragonanim/Armature_animtion0_06.png" id="8_26q0u"]
+[ext_resource type="Texture2D" uid="uid://ls87enpqv5fd" path="res://assets/dragonanim/Armature_animtion0_07.png" id="9_qr28r"]
+[ext_resource type="Texture2D" uid="uid://dqpi8s1y4ub36" path="res://assets/dragonanim/Armature_animtion0_08.png" id="10_87o12"]
+[ext_resource type="Texture2D" uid="uid://bmyrib2u4ekao" path="res://assets/dragonanim/Armature_animtion0_10.png" id="11_eea0m"]
+[ext_resource type="Texture2D" uid="uid://d12wf5oij54em" path="res://assets/dragonanim/Armature_animtion0_09.png" id="12_rurko"]
+[ext_resource type="Texture2D" uid="uid://b5oofppo4j2rs" path="res://assets/splat2.png" id="13_ylrdu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8rrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ybg8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6phx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8r1r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hy6m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_edhvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8dxrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26q0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qr28r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_87o12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rurko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eea0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rurko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_87o12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qr28r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26q0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8dxrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_edhvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hy6m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8r1r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6phx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ybg8t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 21.0
+}]
+
+[sub_resource type="Animation" id="Animation_qwtv4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xl0ny"]
+resource_name = "splat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3yuh"]
+_data = {
+&"RESET": SubResource("Animation_qwtv4"),
+&"splat": SubResource("Animation_xl0ny")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t3eni"]
+polygon = PackedVector2Array(6.74324, 10.137, -2.94215, 4.94769, -14.5765, 9.47885, -31.8577, 11.0497, -40.7561, 5.82537, -40.9278, 1.81888, -34.8718, -4.07002, -18.4806, -8.00973, -4.14151, -4.63287, 5.95301, -8.29279, 9.78531, -10.8716, 16.1163, -10.3501, 22.5159, -8.22605, 25.8704, -3.55818, 26.7605, -1.18927, 26.8292, 0.413324, 26.1796, 3.65349, 23.9901, 7.76491, 22.4504, 8.63616, 18.5837, 10.4136, 15.4354, 10.5536, 12.2871, 10.6935)
+
+[node name="bat" type="CharacterBody2D" groups=["mobs"]]
+position = Vector2(3, 0)
+rotation = 0.0436247
+collision_layer = 3
+script = ExtResource("1_3si2t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10.7319, -16.5477)
+rotation = 1.69537
+scale = Vector2(0.08713, 0.0734733)
+sprite_frames = SubResource("SpriteFrames_x8rrd")
+autoplay = "default"
+frame = 11
+frame_progress = 0.402606
+offset = Vector2(210.341, -61.9459)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-4.25167, -0.381283)
+scale = Vector2(0.836133, 0.835686)
+polygon = PackedVector2Array(-4.60275, 9.20949, -14.4188, 13.6418, -28.3182, 16.2504, -46.3447, 16.0364, -58.6822, 8.56733, -58.9439, 2.57304, -50.2577, -4.8128, -37.2562, -9.67208, -20.5284, -10.4027, -10.8653, -8.4292, -5.25691, -5.77624, -2.39709, -6.40354, 1.03097, -10.1465, 4.56334, -11.4986, 7.6435, -8.34128, 12.4207, -13.5546, 18.3278, -15.8143, 31.4462, -13.3841, 38.5704, -10.6923, 42.8719, -3.87336, 42.2217, 4.16263, 37.4881, 10.375, 31.6247, 13.6338, 21.7214, 16.068, 15.7271, 16.3297, 10.3859, 12.2023, 5.56218, 12.7696, 1.47877, 10.9459, -2.69187, 7.12417)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
+wait_time = 0.075
+one_shot = true
+autostart = true
+
+[node name="SpeedVariationTimer" type="Timer" parent="."]
+wait_time = 0.28
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-16.4645, -10.2918)
+rotation = 1.46295
+scale = Vector2(0.0547817, 0.0814732)
+texture = ExtResource("13_ylrdu")
+offset = Vector2(260.089, -66.121)
+
+[node name="splatter" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_r3yuh")
+}
+
+[node name="SplatNoise" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_brg51")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Loot_Drop" type="Marker2D" parent="."]
+position = Vector2(-2.99715, 0.130833)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(84.8755, -4.70597)
+collision_mask = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 17
+texture = ExtResource("5_74ldu")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+randomness = 0.32
+emission_shape = 1
+emission_sphere_radius = 31.21
+spread = 170.6
+initial_velocity_min = 243.28
+initial_velocity_max = 441.65
+linear_accel_min = 13.79
+linear_accel_max = 13.79
+scale_amount_min = 0.0
+scale_amount_max = 0.51
+color = Color(1, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-1.9981, 0.0872217)
+scale = Vector2(1.26932, 1.24679)
+occluder = SubResource("OccluderPolygon2D_t3eni")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
+[connection signal="timeout" from="SpeedVariationTimer" to="." method="_on_speed_variation_timer_timeout"]

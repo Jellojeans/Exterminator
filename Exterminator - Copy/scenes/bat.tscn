@@ -1,0 +1,161 @@
+[gd_scene load_steps=15 format=3 uid="uid://bq5thbnhew3bu"]
+
+[ext_resource type="Script" uid="uid://rpypfnhr6ena" path="res://script/bat.gd" id="1_xdhk8"]
+[ext_resource type="Texture2D" uid="uid://b60p6gs0i66xh" path="res://assets/christmas game/christmas game/frame0000.png" id="2_q86ws"]
+[ext_resource type="Texture2D" uid="uid://844aiypw14un" path="res://assets/christmas game/christmas game/frame0001.png" id="3_mavod"]
+[ext_resource type="Texture2D" uid="uid://bs2i5duku21yk" path="res://assets/christmas game/christmas game/frame0002.png" id="4_0ranl"]
+[ext_resource type="Texture2D" uid="uid://cystf0p1chhc2" path="res://assets/christmas game/christmas game/frame0003.png" id="5_k3fet"]
+[ext_resource type="Texture2D" uid="uid://bwuq8vj7jjdrw" path="res://assets/splat.png" id="6_ingbb"]
+[ext_resource type="AudioStream" uid="uid://dn8oe3gx7h077" path="res://sounds/bugout sounds/squish.mp3" id="7_4gux3"]
+[ext_resource type="Texture2D" uid="uid://d02mygxm63b1n" path="res://assets/blood.png" id="8_o5032"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf60r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q86ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mavod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ranl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k3fet")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gj6cn"]
+
+[sub_resource type="Animation" id="Animation_qwtv4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xl0ny"]
+resource_name = "splat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3yuh"]
+_data = {
+&"RESET": SubResource("Animation_qwtv4"),
+&"splat": SubResource("Animation_xl0ny")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t3eni"]
+polygon = PackedVector2Array(2.73948, 16.8966, -12.2462, 17.5508, -32.3581, 15.4258, -41.5239, 11.8221, -45.7818, 6.00229, -45.9126, 3.00515, -38.2255, -4.33708, -23.4578, -9.98648, -9.55838, -12.5951, 4.4283, -13.2057, 14.5496, -10.6446, 18.5022, -11.8181, 22.5856, -9.99449, 26.7999, -5.17369, 29.8406, -4.30547, 31.9259, -2.3946, 32.144, 2.60065, 28.2786, 5.77224, 26.2805, 5.85946, 21.4597, 10.0737, 16.4645, 10.2918, 12.5991, 13.4633)
+
+[node name="bat" type="CharacterBody2D" groups=["mobs"]]
+position = Vector2(3, 0)
+rotation = 0.0436247
+collision_layer = 3
+script = ExtResource("1_xdhk8")
+direction_change_interval = 1.04
+max_angle_variation = 48.61
+scuttle_chance = 1.545
+pause_chance = 0.855
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.91088, 2.08533)
+rotation = 0.352741
+scale = Vector2(0.096724, 0.115986)
+sprite_frames = SubResource("SpriteFrames_yf60r")
+autoplay = "default"
+frame = 1
+frame_progress = 0.294991
+offset = Vector2(210.341, -61.9459)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 2)
+rotation = 3.06436
+scale = Vector2(3.7857, 1.36)
+shape = SubResource("CircleShape2D_gj6cn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
+wait_time = 0.075
+one_shot = true
+autostart = true
+
+[node name="SpeedVariationTimer" type="Timer" parent="."]
+wait_time = 0.28
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.99429, 0.261665)
+rotation = 0.407765
+scale = Vector2(0.0929925, 0.122821)
+texture = ExtResource("6_ingbb")
+offset = Vector2(260.089, -66.121)
+
+[node name="splatter" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_r3yuh")
+}
+
+[node name="SplatNoise" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_4gux3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Loot_Drop" type="Marker2D" parent="."]
+position = Vector2(-2.99715, 0.130833)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(84.8755, -4.70597)
+collision_mask = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 17
+texture = ExtResource("8_o5032")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+randomness = 0.32
+emission_shape = 1
+emission_sphere_radius = 31.21
+spread = 170.6
+initial_velocity_min = 243.28
+initial_velocity_max = 441.65
+linear_accel_min = 13.79
+linear_accel_max = 13.79
+scale_amount_min = 0.0
+scale_amount_max = 0.51
+color = Color(1, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_t3eni")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
+[connection signal="timeout" from="SpeedVariationTimer" to="." method="_on_speed_variation_timer_timeout"]

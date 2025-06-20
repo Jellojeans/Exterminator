@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo0ee42cl6yjf"]
+
+[ext_resource type="Script" uid="uid://cb26sruvipqpq" path="res://script/Player.gd" id="1_64x7w"]
+[ext_resource type="PackedScene" uid="uid://bej0bixdwq63n" path="res://scenes/Bullet.tscn" id="2_lroy7"]
+[ext_resource type="PackedScene" uid="uid://dcyw043aac8yd" path="res://scenes/bullet_2.tscn" id="3_df7pi"]
+[ext_resource type="Texture2D" uid="uid://h7iewfsew53d" path="res://assets/crossHair.png" id="4_n6uvd"]
+[ext_resource type="Texture2D" uid="uid://bppj5yqlvrh1d" path="res://assets/feet.png" id="5_62vkj"]
+[ext_resource type="Texture2D" uid="uid://d1u6xe4y407vf" path="res://assets/Exterminator.png" id="5_hedvj"]
+[ext_resource type="Texture2D" uid="uid://mt42lkyj6360" path="res://assets/Untitled-4.png" id="6_4tw07"]
+[ext_resource type="Script" uid="uid://clhvghc1gkovn" path="res://scenes/muzzle.gd" id="6_yhiib"]
+
+[sub_resource type="Animation" id="Animation_mkqw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(401.361, 41.94)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(482.593, 215.921)]
+}
+
+[sub_resource type="Animation" id="Animation_u63xn"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(464.048, 210.549), Vector2(464.048, 210.549)]
+}
+
+[sub_resource type="Animation" id="Animation_y5bva"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(401.361, 41.94), Vector2(500.095, 41.5371), Vector2(370.601, 58.4074), Vector2(487.753, 41.5874), Vector2(383.006, 69.2513)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(482.593, 215.921), Vector2(383.827, 210.877), Vector2(494.903, 210.424), Vector2(383.827, 210.877)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tlt1s"]
+_data = {
+&"RESET": SubResource("Animation_mkqw4"),
+&"idle": SubResource("Animation_u63xn"),
+&"walk": SubResource("Animation_y5bva")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.605626, 0.575749)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_64x7w")
+bullet_types = Array[PackedScene]([ExtResource("2_lroy7"), ExtResource("3_df7pi")])
+cursor_texture = ExtResource("4_n6uvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-1.65118, -31.2636)
+rotation = 0.00486359
+scale = Vector2(0.267573, 0.318855)
+texture = ExtResource("5_hedvj")
+offset = Vector2(471.82, 199.011)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(401.361, 41.94)
+texture = ExtResource("5_62vkj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(482.593, 215.921)
+texture = ExtResource("5_62vkj")
+
+[node name="Muzzle" type="Marker2D" parent="Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(623.797, 90.0576)
+gizmo_extents = 1209.5
+script = ExtResource("6_yhiib")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.082
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.65118, -31.2636)
+rotation = -0.00487247
+polygon = PackedVector2Array(-22.2531, 51.8922, -16.2727, 55.9214, -9.32148, 65.9554, 11.6637, 69.0577, 54.6924, 63.2672, 72.4143, 48.9857, 79.0274, 47.2811, 88.9598, 42.1188, 92.279, 38.6612, 112.101, 37.0209, 113.761, 35.2921, 166.598, 35.5495, 166.632, 28.6021, 113.803, 26.6078, 113.82, 23.1341, 84.0909, 24.7262, 79.1544, 21.2283, 70.8901, 22.925, 62.6004, 29.8321, 44.4291, 31.4805, 47.902, 20.2336, 55.936, 13.2727, 55.9555, 9.27275, 59.9798, 4.2923, 64.9944, 1.3167, 64.0187, -3.68812, 60.0334, -6.70757, 56.0578, -11.727, 53.0871, -17.7415, 47.1115, -22.7707, 41.1847, -37.7998, 41.2042, -41.7997, 32.2481, -50.8435, 23.2969, -60.8872, 9.29224, -59.9554, 3.27769, -56.9847, -23.7366, -54.1163, -21.8, -41.1067, -30.7463, -52.1504, -42.7315, -55.2089, -58.7606, -49.2869, -68.814, -38.3358, -71.8871, -23.3505, -66.9602, -8.32636, -60.9895, -2.2972, -69.0382, 7.66371, -72.0966, 19.6489, -71.1551, 31.6537, -65.199, 40.6828, -55.2332, 47.7314, -40.2529, 51.8045, -27.2384, 48.8679, -23.1751, 35.8875)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="hutbox_collisionshape" type="CollisionPolygon2D" parent="Hurtbox"]
+position = Vector2(-1.65118, -31.2636)
+polygon = PackedVector2Array(-4.95355, 67.7379, -14.8607, 59.0535, -21.4654, 52.1061, -31.3725, 50.3692, -47.8844, 50.3692, -61.0938, 45.1586, -72.6521, 27.7899, -71.001, 10.4212, -59.4427, -1.73687, -69.3498, -12.1581, -71.001, -31.2636, -64.3962, -41.6848, -54.4891, -52.1061, -36.3261, -55.5798, -28.0701, -48.6323, -23.1166, -39.948, -23.1166, -55.5798, 4.95355, -57.3167, 16.5118, -62.5273, 24.7678, -59.0535, 36.3261, -45.1586, 41.2796, -43.4217, 42.9308, -39.948, 41.2796, -38.2111, 46.2332, -29.5268, 46.2332, -22.5793, 56.1403, -15.6318, 56.1403, -10.4212, 64.3962, -3.47374, 64.3962, 1.73687, 56.1403, 8.68434, 52.8379, 15.6318, 46.2332, 20.8424, 42.9308, 31.2636, 62.745, 29.5268, 69.3497, 26.053, 79.2568, 20.8424, 84.2104, 24.3162, 113.932, 22.5793, 113.932, 26.053, 166.77, 27.7899, 166.77, 34.7374, 113.932, 34.7374, 92.4663, 38.2111, 85.8616, 43.4217, 80.908, 46.8954, 74.3033, 46.8954, 69.3498, 50.3692, 61.0938, 59.0535, 42.9308, 64.2641, 21.4654, 67.7379, 4.95355, 69.4747)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = -4750.46
+offset_top = -4095.53
+offset_right = -910.457
+offset_bottom = -1935.53
+scale = Vector2(2.979, 3.74811)
+texture = ExtResource("6_4tw07")
+
+[node name="PowerUpTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tlt1s")
+}
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]
